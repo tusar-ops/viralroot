@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trending Memes & Origins — ViralRoot</title>
+  <meta name="description" content="All trending memes explained. Find the origin, creator, and why every viral trend went crazy."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark-mode">
+  <nav class="navbar">
+    <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="trending.html" class="active">Trending</a>
+      <a href="sounds.html">Sounds</a>
+      <a href="categories.html">Categories</a>
+      <a href="submit.html">Submit a Meme</a>
+    </div>
+    <div class="nav-search">
+      <input type="text" id="navSearch" placeholder="Search memes, sounds..." onkeyup="handleSearch(event)"/>
+      <button onclick="goSearch()">🔍</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="sounds.html">Sounds</a>
+    <a href="submit.html">Submit a Meme</a>
+  </div>
+
+  <div class="trending-page">
+    <div class="page-hero">
+      <h1>🔥 ALL<br/>TRENDING<br/>MEMES</h1>
+      <p>Every viral meme, fully explained. Origin, creator, audio name, and why the internet lost its mind.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">ALL PLATFORMS</button>
+      <button class="filter-btn" data-filter="tiktok" onclick="setFilter('tiktok')">🎵 TIKTOK</button>
+      <button class="filter-btn" data-filter="instagram" onclick="setFilter('instagram')">📸 INSTAGRAM</button>
+      <button class="filter-btn" data-filter="youtube" onclick="setFilter('youtube')">▶️ YOUTUBE</button>
+      <button class="filter-btn" data-filter="twitter" onclick="setFilter('twitter')">🐦 TWITTER/X</button>
+      <button class="filter-btn" data-filter="reddit" onclick="setFilter('reddit')">👽 REDDIT</button>
+    </div>
+
+    <div class="meme-grid" id="trendingGrid"></div>
+  </div>
+
+  <section class="newsletter-section">
+    <h2>📬 WEEKLY MEME ORIGINS</h2>
+    <p>Get the top 5 explained every Friday. Free.</p>
+    <div class="newsletter-form">
+      <input type="email" id="emailInput" placeholder="your@email.com"/>
+      <button onclick="subscribeNewsletter()">SUBSCRIBE</button>
+    </div>
+    <div id="newsletterMsg" class="newsletter-msg"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+        <p>The internet's meme encyclopedia.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="trending.html">Trending Memes</a>
+        <a href="sounds.html">Viral Sounds</a>
+        <a href="submit.html">Submit a Meme</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 ViralRoot</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    function setFilter(platform) {
+      const url = new URL(window.location);
+      url.searchParams.set('platform', platform);
+      window.history.pushState({}, '', url);
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === platform);
+      });
+      let memes = platform === 'all' ? MEMES : MEMES.filter(m => m.platforms.includes(platform));
+      const container = document.getElementById('trendingGrid');
+      if (!container) return;
+      container.innerHTML = memes.map(m => `
+        <a href="meme.html?id=${m.id}" class="meme-card">
+          <div class="meme-card-top">
+            <div class="meme-card-emoji">${m.emoji}</div>
+            <span class="meme-card-badge ${badgeClass(m.badge)}">${badgeText(m.badge)}</span>
+          </div>
+          <h3>${m.name}</h3>
+          <p>${m.summary.substring(0, 100)}...</p>
+          <div class="meme-card-footer">
+            ${m.tags.slice(0,3).map(t => `<span class="meme-tag">#${t}</span>`).join('')}
+          </div>
+        </a>
+      `).join('');
+    }
+  </script>
+</body>
+</html>

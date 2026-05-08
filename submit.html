@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Meme — ViralRoot</title>
+  <meta name="description" content="Know about a meme or viral trend we haven't covered yet? Submit it and help us document internet history."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark-mode">
+  <nav class="navbar">
+    <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="sounds.html">Sounds</a>
+      <a href="categories.html">Categories</a>
+      <a href="submit.html" class="active">Submit a Meme</a>
+    </div>
+    <div class="nav-search">
+      <input type="text" id="navSearch" placeholder="Search memes, sounds..." onkeyup="handleSearch(event)"/>
+      <button onclick="goSearch()">🔍</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="sounds.html">Sounds</a>
+    <a href="submit.html">Submit a Meme</a>
+  </div>
+
+  <div class="submit-page">
+    <h1>SUBMIT A MEME</h1>
+    <p>Know a trending meme, viral sound, or internet trend we haven't covered yet? Tell us about it. We research it and post a full origin story. Help us document internet history.</p>
+
+    <div id="submitSuccess" class="submit-success">
+      ✅ SUBMISSION RECEIVED! We'll research this and post it soon. Thank you for contributing to the internet's meme archive.
+    </div>
+
+    <div id="submitForm">
+      <div class="form-group">
+        <label>MEME / TREND NAME *</label>
+        <input type="text" id="memeName" placeholder="e.g. Skibidi Toilet, Hawk Tuah, etc."/>
+      </div>
+      <div class="form-group">
+        <label>PLATFORM WHERE IT'S TRENDING *</label>
+        <select id="memePlatform">
+          <option value="">Select platform...</option>
+          <option value="tiktok">TikTok</option>
+          <option value="instagram">Instagram Reels</option>
+          <option value="youtube">YouTube</option>
+          <option value="twitter">Twitter/X</option>
+          <option value="reddit">Reddit</option>
+          <option value="facebook">Facebook</option>
+          <option value="multiple">Multiple platforms</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>WHERE DID IT ORIGINATE? *</label>
+        <textarea id="memeOrigin" placeholder="Who created it? Which account? When did it first appear? Any URL?"></textarea>
+      </div>
+      <div class="form-group">
+        <label>WHY DO YOU THINK IT WENT VIRAL?</label>
+        <textarea id="memeWhy" placeholder="What made this explode? Was it funny, shocking, relatable?"></textarea>
+      </div>
+      <div class="form-group">
+        <label>AUDIO / SOUND NAME (if applicable)</label>
+        <input type="text" id="memeAudio" placeholder="Name of the song or audio clip, if known"/>
+      </div>
+      <div class="form-group">
+        <label>LINK TO ORIGINAL POST (optional)</label>
+        <input type="text" id="memeLink" placeholder="https://..."/>
+      </div>
+      <div class="form-group">
+        <label>YOUR NAME OR HANDLE (optional — for credit)</label>
+        <input type="text" id="memeSubmitter" placeholder="@yourhandle"/>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">SUBMIT FOR RESEARCH →</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+        <p>The internet's meme encyclopedia.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="trending.html">Trending Memes</a>
+        <a href="sounds.html">Viral Sounds</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 ViralRoot</p></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

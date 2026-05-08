@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ViralRoot — Where Memes Come From</title>
+  <meta name="description" content="Discover the origin of every viral meme, trending sound, and internet trend. Find where memes started, who created them, and why they went viral."/>
+  <meta name="keywords" content="meme origin, viral sounds, trending memes, where did this meme come from, tiktok sounds, instagram reels audio"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+  <!-- GOOGLE ADSENSE — replace ca-pub-XXXXXXXXXXXXXXXX with your real ID after approval -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+</head>
+<body class="dark-mode">
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="sounds.html">Sounds</a>
+      <a href="categories.html">Categories</a>
+      <a href="submit.html">Submit a Meme</a>
+    </div>
+    <div class="nav-search">
+      <input type="text" id="navSearch" placeholder="Search memes, sounds..." onkeyup="handleSearch(event)"/>
+      <button onclick="goSearch()">🔍</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" id="themeBtn">🌙</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="sounds.html">Sounds</a>
+    <a href="categories.html">Categories</a>
+    <a href="submit.html">Submit a Meme</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-content">
+      <div class="hero-tag">🌍 All Platforms · All Memes · All Origins</div>
+      <h1>WHERE DO<br/><span class="accent">MEMES</span><br/>COME FROM?</h1>
+      <p>Every viral trend has a story. We find the origin, the audio name, the creator, and why the internet went crazy.</p>
+      <div class="hero-search">
+        <input type="text" id="heroSearch" placeholder="Search any meme, sound, or trend..." onkeyup="handleSearch(event)"/>
+        <button onclick="goSearch()">SEARCH</button>
+      </div>
+      <div class="hero-tags">
+        <span onclick="searchTag('skibidi')">skibidi toilet</span>
+        <span onclick="searchTag('hawk tuah')">hawk tuah</span>
+        <span onclick="searchTag('very demure')">very demure</span>
+        <span onclick="searchTag('brat summer')">brat summer</span>
+        <span onclick="searchTag('wah wah wah sound')">wah wah wah</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card c1">🔥 TRENDING</div>
+      <div class="floating-card c2">🎵 AUDIO FOUND</div>
+      <div class="floating-card c3">📍 ORIGIN TRACED</div>
+      <div class="big-emoji">🌐</div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>🔥 TRENDING NOW:</span>
+      <span>Skibidi Toilet Origin</span>
+      <span>•</span>
+      <span>Hawk Tuah Girl Story</span>
+      <span>•</span>
+      <span>Very Demure Explained</span>
+      <span>•</span>
+      <span>Brat Summer History</span>
+      <span>•</span>
+      <span>Apple Bottom Jeans Sound</span>
+      <span>•</span>
+      <span>Subway Surfers Why?</span>
+      <span>•</span>
+      <span>NPC Streaming Trend</span>
+      <span>•</span>
+      <span>Rizz Meaning & Origin</span>
+      <span>•</span>
+      <span>🔥 TRENDING NOW:</span>
+      <span>Skibidi Toilet Origin</span>
+      <span>•</span>
+      <span>Hawk Tuah Girl Story</span>
+      <span>•</span>
+      <span>Very Demure Explained</span>
+      <span>•</span>
+    </div>
+  </div>
+
+  <!-- MEME OF THE DAY -->
+  <section class="section motd-section">
+    <div class="motd-container" id="memeOfDay"></div>
+  </section>
+
+  <!-- AD SLOT 1 (activate after AdSense approval) -->
+  <!--
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  -->
+
+  <!-- FEATURED -->
+  <section class="section">
+    <div class="section-header">
+      <h2>🔥 FEATURED THIS WEEK</h2>
+      <a href="trending.html" class="see-all">See All →</a>
+    </div>
+    <div class="featured-grid" id="featuredGrid"></div>
+  </section>
+
+  <!-- LATEST MEMES -->
+  <section class="section dark-section">
+    <div class="section-header">
+      <h2>⚡ LATEST ORIGINS EXPLAINED</h2>
+      <a href="trending.html" class="see-all">View All →</a>
+    </div>
+    <div class="meme-grid" id="memeGrid"></div>
+  </section>
+
+  <!-- SOUNDS SECTION -->
+  <section class="section">
+    <div class="section-header">
+      <h2>🎵 VIRAL SOUNDS IDENTIFIED</h2>
+      <a href="sounds.html" class="see-all">All Sounds →</a>
+    </div>
+    <div class="sounds-grid" id="soundsGrid"></div>
+  </section>
+
+  <!-- PLATFORMS -->
+  <section class="section platforms-section">
+    <h2>📱 EVERY PLATFORM COVERED</h2>
+    <div class="platforms-grid">
+      <div class="platform-card" onclick="filterByPlatform('tiktok')">
+        <span class="platform-icon">🎵</span>
+        <span>TikTok</span>
+      </div>
+      <div class="platform-card" onclick="filterByPlatform('instagram')">
+        <span class="platform-icon">📸</span>
+        <span>Instagram</span>
+      </div>
+      <div class="platform-card" onclick="filterByPlatform('youtube')">
+        <span class="platform-icon">▶️</span>
+        <span>YouTube</span>
+      </div>
+      <div class="platform-card" onclick="filterByPlatform('twitter')">
+        <span class="platform-icon">🐦</span>
+        <span>Twitter/X</span>
+      </div>
+      <div class="platform-card" onclick="filterByPlatform('reddit')">
+        <span class="platform-icon">👽</span>
+        <span>Reddit</span>
+      </div>
+      <div class="platform-card" onclick="filterByPlatform('facebook')">
+        <span class="platform-icon">👍</span>
+        <span>Facebook</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section why-section">
+    <h2>WHY VIRALROOT?</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3>Posted in 24–48hrs</h3>
+        <p>We cover memes while they're still trending — not weeks later.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <h3>Deep Research</h3>
+        <p>We trace every meme back to its original creator, account, and post.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎵</div>
+        <h3>Audio Named</h3>
+        <p>Can't find that sound? We identify the song, artist, and original clip.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <h3>Global Coverage</h3>
+        <p>From US to India to Brazil — we cover trends from every corner of the internet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <h2>📬 GET MEME ORIGINS IN YOUR INBOX</h2>
+    <p>Every week's top meme breakdowns — free, no spam.</p>
+    <div class="newsletter-form">
+      <input type="email" id="emailInput" placeholder="your@email.com"/>
+      <button onclick="subscribeNewsletter()">SUBSCRIBE FREE</button>
+    </div>
+    <div id="newsletterMsg" class="newsletter-msg"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">VIRAL<span>ROOT</span></div>
+        <p>The internet's meme encyclopedia. Every origin. Every sound. Every story.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="trending.html">Trending Memes</a>
+        <a href="sounds.html">Viral Sounds</a>
+        <a href="categories.html">Categories</a>
+        <a href="submit.html">Submit a Meme</a>
+      </div>
+      <div class="footer-links">
+        <h4>Platforms</h4>
+        <a href="trending.html?platform=tiktok">TikTok Trends</a>
+        <a href="trending.html?platform=instagram">Instagram Reels</a>
+        <a href="trending.html?platform=youtube">YouTube</a>
+        <a href="trending.html?platform=twitter">Twitter/X</a>
+      </div>
+      <div class="footer-links">
+        <h4>About</h4>
+        <a href="about.html">About Us</a>
+        <a href="submit.html">Contribute</a>
+        <a href="mailto:hello@viralroot.com">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 ViralRoot. Built for the internet, by the internet.</p>
+      <p>Not affiliated with any social media platform.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

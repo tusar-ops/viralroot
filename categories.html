@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meme Categories — ViralRoot</title>
+  <meta name="description" content="Browse memes by category. Sounds, phrases, video memes, aesthetic trends and more."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark-mode">
+  <nav class="navbar">
+    <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="sounds.html">Sounds</a>
+      <a href="categories.html" class="active">Categories</a>
+      <a href="submit.html">Submit a Meme</a>
+    </div>
+    <div class="nav-search">
+      <input type="text" id="navSearch" placeholder="Search memes, sounds..." onkeyup="handleSearch(event)"/>
+      <button onclick="goSearch()">🔍</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="sounds.html">Sounds</a>
+    <a href="submit.html">Submit a Meme</a>
+  </div>
+
+  <div style="max-width:1200px;margin:0 auto;padding:3rem 2rem">
+    <div style="margin-bottom:3rem">
+      <h1 style="font-family:var(--font-display);font-size:clamp(3rem,8vw,5rem);letter-spacing:3px;line-height:0.95;margin-bottom:1rem">BROWSE BY<br/>CATEGORY</h1>
+      <p style="color:var(--text);font-size:1.1rem">Every type of internet trend, organized.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem" id="categoriesGrid"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+        <p>The internet's meme encyclopedia.</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 ViralRoot</p></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const CATEGORIES = [
+      { name: "Viral Sounds", emoji: "🎵", tag: "sound", desc: "TikTok and Reel audios that became massive" },
+      { name: "Viral Phrases", emoji: "💬", tag: "phrase", desc: "Words and expressions that took over the internet" },
+      { name: "Video Memes", emoji: "📹", tag: "video", desc: "Clip-based memes and reaction videos" },
+      { name: "Gen-Z Slang", emoji: "🧠", tag: "slang", desc: "New words born from internet culture" },
+      { name: "Aesthetic Trends", emoji: "🎨", tag: "aesthetic", desc: "Visual trends and internet aesthetics" },
+      { name: "Challenge Memes", emoji: "🏆", tag: "challenge", desc: "Viral challenges and participation trends" },
+      { name: "Music-Based", emoji: "🎶", tag: "music", desc: "Trends tied to specific songs or artists" },
+      { name: "Street Interview", emoji: "🎤", tag: "street-interview", desc: "Random people caught on camera going viral" },
+      { name: "Gaming-Origin", emoji: "🎮", tag: "gaming", desc: "Memes that originated in gaming culture" },
+      { name: "Gen-Alpha", emoji: "👶", tag: "gen-alpha", desc: "Trends from the youngest internet generation" },
+      { name: "Surreal/Absurdist", emoji: "🌀", tag: "surreal", desc: "Weird, abstract, and deeply confusing memes" },
+      { name: "Pop Culture", emoji: "⭐", tag: "pop-culture", desc: "Celebrity and entertainment-driven trends" }
+    ];
+
+    document.getElementById('categoriesGrid').innerHTML = CATEGORIES.map(cat => `
+      <a href="search.html?q=${cat.tag}" style="background:var(--card);border:1px solid var(--border);padding:2rem;display:block;text-decoration:none;color:inherit;transition:all 0.2s;cursor:pointer"
+         onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:3rem;margin-bottom:1rem">${cat.emoji}</div>
+        <h3 style="font-family:var(--font-display);font-size:1.5rem;letter-spacing:1px;margin-bottom:0.5rem">${cat.name}</h3>
+        <p style="color:var(--text);font-size:0.85rem;line-height:1.6">${cat.desc}</p>
+      </a>
+    `).join('');
+  </script>
+</body>
+</html>

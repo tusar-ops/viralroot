@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About ViralRoot — The Internet's Meme Encyclopedia</title>
+  <meta name="description" content="ViralRoot documents the origin of every viral meme, trending sound, and internet trend. Built for the internet, by the internet."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark-mode">
+  <nav class="navbar">
+    <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="sounds.html">Sounds</a>
+      <a href="categories.html">Categories</a>
+      <a href="submit.html">Submit a Meme</a>
+    </div>
+    <div class="nav-search">
+      <input type="text" id="navSearch" placeholder="Search memes, sounds..." onkeyup="handleSearch(event)"/>
+      <button onclick="goSearch()">🔍</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <div style="max-width:800px;margin:0 auto;padding:4rem 2rem">
+    <h1 style="font-family:var(--font-display);font-size:clamp(3rem,8vw,5rem);letter-spacing:3px;line-height:0.95;margin-bottom:2rem">ABOUT<br/>VIRALROOT</h1>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);padding:2rem;margin-bottom:2.5rem">
+      <p style="font-family:var(--font-display);font-size:1.5rem;letter-spacing:1px;color:var(--accent)">"Every meme has a story. We find it."</p>
+    </div>
+
+    <div style="color:var(--text);line-height:1.9;font-size:1rem">
+      <p style="margin-bottom:1.5rem">ViralRoot is a meme encyclopedia and origin database. When something goes viral — a sound, a phrase, a video, a trend — we research where it started, who created it, why it exploded, and what it's called.</p>
+      <p style="margin-bottom:1.5rem">Our mission is simple: <strong style="color:var(--white)">be the first result when someone Googles a meme.</strong> When you see something trending on TikTok or Instagram and think "where does this come from?" — we want to be your answer.</p>
+      <p style="margin-bottom:1.5rem">We cover trends from every platform: TikTok, Instagram Reels, YouTube, Twitter/X, Reddit, Facebook — and from every country and culture. Memes don't respect borders and neither do we.</p>
+    </div>
+
+    <h2 style="font-family:var(--font-display);font-size:2rem;letter-spacing:2px;margin:3rem 0 1.5rem;color:var(--accent)">HOW WE WORK</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:3rem">
+      ${[
+        ['⚡', 'Fast Coverage', 'We post about trending memes within 24–48 hours of them going viral.'],
+        ['🔬', 'Deep Research', 'We trace origins back to the first post, creator, and account.'],
+        ['🎵', 'Audio ID', 'We identify the name of every viral sound and original artist.'],
+        ['🌍', 'Global Scope', 'We cover trends from all countries and all platforms.']
+      ].map(([icon, title, desc]) => `
+        <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:0.75rem">${icon}</div>
+          <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:0.5rem">${title}</h3>
+          <p style="color:var(--text);font-size:0.85rem;line-height:1.6">${desc}</p>
+        </div>
+      `).join('')}
+    </div>
+
+    <h2 style="font-family:var(--font-display);font-size:2rem;letter-spacing:2px;margin-bottom:1.5rem;color:var(--accent)">CONTRIBUTE</h2>
+    <p style="color:var(--text);line-height:1.7;margin-bottom:1.5rem">See a trend we haven't covered? Know the origin of a sound we haven't identified? <a href="submit.html" style="color:var(--accent)">Submit it here</a> and help us build the internet's most comprehensive meme archive.</p>
+
+    <p style="color:var(--text);line-height:1.7">Contact us: <a href="mailto:hello@viralroot.com" style="color:var(--accent)">hello@viralroot.com</a></p>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+        <p>The internet's meme encyclopedia.</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 ViralRoot. Built for the internet, by the internet.</p></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

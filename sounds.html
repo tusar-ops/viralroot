@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Viral Sounds Identified — ViralRoot</title>
+  <meta name="description" content="Find the name of any viral TikTok or Instagram sound. We identify every trending audio clip, song, and sound effect."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark-mode">
+  <nav class="navbar">
+    <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="sounds.html" class="active">Sounds</a>
+      <a href="categories.html">Categories</a>
+      <a href="submit.html">Submit a Meme</a>
+    </div>
+    <div class="nav-search">
+      <input type="text" id="navSearch" placeholder="Search memes, sounds..." onkeyup="handleSearch(event)"/>
+      <button onclick="goSearch()">🔍</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="sounds.html">Sounds</a>
+    <a href="submit.html">Submit a Meme</a>
+  </div>
+
+  <div class="sounds-page">
+    <div class="page-hero" style="margin-bottom:3rem">
+      <h1 style="font-family:var(--font-display);font-size:clamp(3rem,8vw,6rem);letter-spacing:3px;line-height:0.95;margin-bottom:1rem">🎵 VIRAL<br/>SOUNDS<br/>IDENTIFIED</h1>
+      <p style="color:var(--text);font-size:1.1rem;max-width:500px">Can't find that sound from a TikTok or Reel? We name every viral audio, identify the original artist, and trace it back to its source.</p>
+    </div>
+
+    <div style="background:rgba(0,255,135,0.05);border:1px solid var(--green);padding:1.5rem;margin-bottom:3rem;max-width:600px">
+      <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--green);letter-spacing:2px;margin-bottom:0.75rem">💡 CAN'T FIND YOUR SOUND?</div>
+      <p style="color:var(--text);font-size:0.9rem;line-height:1.7">Describe it in our search above, or <a href="submit.html" style="color:var(--green)">submit it here</a> and we'll identify it and add it to our database.</p>
+    </div>
+
+    <div class="sounds-big-grid" id="soundsBigGrid"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+        <p>The internet's meme encyclopedia.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="trending.html">Trending Memes</a>
+        <a href="sounds.html">Viral Sounds</a>
+        <a href="submit.html">Submit a Meme</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 ViralRoot</p></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

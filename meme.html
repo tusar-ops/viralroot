@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meme Origin — ViralRoot</title>
+  <meta name="description" content="Meme origin and explained."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark-mode">
+  <nav class="navbar">
+    <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="sounds.html">Sounds</a>
+      <a href="categories.html">Categories</a>
+      <a href="submit.html">Submit a Meme</a>
+    </div>
+    <div class="nav-search">
+      <input type="text" id="navSearch" placeholder="Search memes, sounds..." onkeyup="handleSearch(event)"/>
+      <button onclick="goSearch()">🔍</button>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="sounds.html">Sounds</a>
+    <a href="submit.html">Submit a Meme</a>
+  </div>
+
+  <div id="memeDetailContainer"></div>
+
+  <!-- SOCIAL SHARE BAR (floating) -->
+  <div class="share-bar" id="shareBar">
+    <div class="share-label">SHARE</div>
+    <button class="share-btn share-twitter" onclick="shareTwitter()" title="Share on X/Twitter">𝕏</button>
+    <button class="share-btn share-whatsapp" onclick="shareWhatsapp()" title="Share on WhatsApp">💬</button>
+    <button class="share-btn share-copy" onclick="copyLink()" title="Copy link" id="copyBtn">🔗</button>
+    <button class="share-btn share-reddit" onclick="shareReddit()" title="Share on Reddit">👽</button>
+  </div>
+
+  <!-- DISQUS COMMENTS -->
+  <div class="disqus-wrap" id="disqusSection">
+    <div class="section" style="max-width:900px;margin:0 auto">
+      <h2 style="font-family:var(--font-display);font-size:2rem;letter-spacing:2px;margin-bottom:1.5rem">💬 DISCUSSION</h2>
+      <div id="disqus_thread"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
+        <p>The internet's meme encyclopedia.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="trending.html">Trending Memes</a>
+        <a href="sounds.html">Viral Sounds</a>
+        <a href="submit.html">Submit a Meme</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 ViralRoot</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+
+  <!-- DISQUS — replace YOUR_DISQUS_SHORTNAME with your shortname from disqus.com -->
+  <script>
+    var PAGE_URL = window.location.href;
+    var PAGE_IDENTIFIER = window.location.search;
+    var disqus_config = function () {
+      this.page.url = PAGE_URL;
+      this.page.identifier = PAGE_IDENTIFIER;
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      // Replace viralroot with your actual Disqus shortname:
+      s.src = 'https://viralroot.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+</body>
+</html>
