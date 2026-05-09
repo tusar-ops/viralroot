@@ -1269,3 +1269,88 @@ body.light-mode .sound-card:hover { background: #f0fff6; }
   letter-spacing: 1px;
 }
 
+
+/* ===== REAL IMAGES ON CARDS ===== */
+.featured-card-img {
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.featured-card-img .card-emoji-fallback {
+  font-size: 5rem;
+}
+
+/* ===== REAL PLATFORM LOGOS ===== */
+.platform-card svg { width: 40px; height: 40px; }
+.platform-card.tiktok { border-color: #010101; }
+.platform-card.tiktok:hover { background: #010101; color: #fff; }
+.platform-card.instagram:hover { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; border-color: #E1306C; }
+.platform-card.youtube:hover { background: #FF0000; color: #fff; border-color: #FF0000; }
+.platform-card.twitter:hover { background: #000; color: #fff; border-color: #000; }
+.platform-card.reddit:hover { background: #FF4500; color: #fff; border-color: #FF4500; }
+.platform-card.facebook:hover { background: #1877F2; color: #fff; border-color: #1877F2; }
+
+/* ===== PLATFORM BADGE CHIPS ===== */
+.platform-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+}
+.platform-chip svg { width: 12px; height: 12px; }
+
+/* ===== AUDIO LISTEN BUTTON ===== */
+.audio-listen-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 0.75rem;
+  transition: opacity 0.2s;
+}
+.audio-listen-btn:hover { opacity: 0.85; }
+.audio-listen-btn svg { flex-shrink: 0; }
+.audio-icon-wrap {
+  width: 64px; height: 64px;
+  background: rgba(0,255,135,0.1);
+  border: 1px solid var(--green);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ===== MEME IMAGE ON DETAIL PAGE ===== */
+.meme-detail-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+  display: block;
+}
+.meme-emoji-banner {
+  font-size: 8rem;
+  text-align: center;
+  padding: 3rem;
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+/* ===== SOUND CARDS UPGRADED ===== */
+.sound-detail-card .sound-platform-logo {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.7rem;
+  color: var(--green); margin-top: 0.5rem;
+}
