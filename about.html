@@ -26,6 +26,13 @@
     <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙</button>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="trending.html">Trending</a>
+    <a href="sounds.html">Sounds</a>
+    <a href="categories.html">Categories</a>
+    <a href="submit.html">Submit a Meme</a>
+  </div>
 
   <div style="max-width:800px;margin:0 auto;padding:4rem 2rem">
     <h1 style="font-family:var(--font-display);font-size:clamp(3rem,8vw,5rem);letter-spacing:3px;line-height:0.95;margin-bottom:2rem">ABOUT<br/>VIRALROOT</h1>
@@ -42,18 +49,26 @@
 
     <h2 style="font-family:var(--font-display);font-size:2rem;letter-spacing:2px;margin:3rem 0 1.5rem;color:var(--accent)">HOW WE WORK</h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:3rem">
-      ${[
-        ['⚡', 'Fast Coverage', 'We post about trending memes within 24–48 hours of them going viral.'],
-        ['🔬', 'Deep Research', 'We trace origins back to the first post, creator, and account.'],
-        ['🎵', 'Audio ID', 'We identify the name of every viral sound and original artist.'],
-        ['🌍', 'Global Scope', 'We cover trends from all countries and all platforms.']
-      ].map(([icon, title, desc]) => `
-        <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem">
-          <div style="font-size:2rem;margin-bottom:0.75rem">${icon}</div>
-          <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:0.5rem">${title}</h3>
-          <p style="color:var(--text);font-size:0.85rem;line-height:1.6">${desc}</p>
-        </div>
-      `).join('')}
+      <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem">
+        <div style="font-size:2rem;margin-bottom:0.75rem">⚡</div>
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:0.5rem">Fast Coverage</h3>
+        <p style="color:var(--text);font-size:0.85rem;line-height:1.6">We post about trending memes within 24–48 hours of them going viral.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem">
+        <div style="font-size:2rem;margin-bottom:0.75rem">🔬</div>
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:0.5rem">Deep Research</h3>
+        <p style="color:var(--text);font-size:0.85rem;line-height:1.6">We trace origins back to the first post, creator, and account.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem">
+        <div style="font-size:2rem;margin-bottom:0.75rem">🎵</div>
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:0.5rem">Audio ID</h3>
+        <p style="color:var(--text);font-size:0.85rem;line-height:1.6">We identify the name of every viral sound and original artist.</p>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem">
+        <div style="font-size:2rem;margin-bottom:0.75rem">🌍</div>
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;letter-spacing:1px;margin-bottom:0.5rem">Global Scope</h3>
+        <p style="color:var(--text);font-size:0.85rem;line-height:1.6">We cover trends from all countries and all platforms.</p>
+      </div>
     </div>
 
     <h2 style="font-family:var(--font-display);font-size:2rem;letter-spacing:2px;margin-bottom:1.5rem;color:var(--accent)">CONTRIBUTE</h2>
