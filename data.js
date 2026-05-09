@@ -38,7 +38,7 @@ const MEMES = [
     id: "hawk-tuah",
     name: "Hawk Tuah Girl",
     emoji: "🎤",
-    image: null,
+    image: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Hailey_Welch_June_2024.jpg/320px-Hailey_Welch_June_2024.jpg",
     slug: "hawk-tuah",
     platforms: ["tiktok", "instagram", "twitter"],
     badge: "hot",
@@ -67,7 +67,7 @@ const MEMES = [
     id: "very-demure",
     name: "Very Demure, Very Mindful",
     emoji: "💅",
-    image: null,
+    image: "https://images.unsplash.com/photo-1621570169561-125dd1f422eb?w=320&q=80", // Placeholder for Jools Lebron
     slug: "very-demure",
     platforms: ["tiktok", "instagram"],
     badge: "hot",
@@ -96,7 +96,7 @@ const MEMES = [
     id: "brat-summer",
     name: "Brat Summer",
     emoji: "💚",
-    image: null,
+    image: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Charli_XCX_-_Brat.png/320px-Charli_XCX_-_Brat.png",
     slug: "brat-summer",
     platforms: ["tiktok", "instagram", "twitter"],
     badge: "hot",
@@ -125,7 +125,7 @@ const MEMES = [
     id: "npc-streaming",
     name: "NPC Streaming",
     emoji: "🤖",
-    image: null,
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=320&q=80", // Placeholder for NPC Streamer
     slug: "npc-streaming",
     platforms: ["tiktok"],
     badge: "classic",
@@ -154,7 +154,7 @@ const MEMES = [
     id: "rizz",
     name: "Rizz",
     emoji: "😎",
-    image: null,
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Kai_Cenat_2024_%28cropped%29.jpg/320px-Kai_Cenat_2024_%28cropped%29.jpg",
     slug: "rizz",
     platforms: ["twitter", "tiktok", "instagram"],
     badge: "classic",
@@ -191,6 +191,7 @@ const SOUNDS = [
     platform: "YouTube → TikTok",
     meme_id: "skibidi-toilet",
     year: "2022",
+    image: "https://img.youtube.com/vi/wCJBpvGZnmg/hqdefault.jpg",
     audio_url: "https://www.youtube.com/watch?v=wCJBpvGZnmg",
     audio_type: "youtube"
   },
@@ -202,6 +203,7 @@ const SOUNDS = [
     platform: "TikTok → All Platforms",
     meme_id: "hawk-tuah",
     year: "2024",
+    image: "https://img.youtube.com/vi/3SKpCBQFCHg/hqdefault.jpg",
     audio_url: "https://www.youtube.com/watch?v=3SKpCBQFCHg",
     audio_type: "youtube"
   },
@@ -213,6 +215,7 @@ const SOUNDS = [
     platform: "TikTok",
     meme_id: "very-demure",
     year: "2024",
+    image: "https://images.unsplash.com/photo-1621570169561-125dd1f422eb?w=320&q=80",
     audio_url: "https://www.tiktok.com/@joolieannie",
     audio_type: "link"
   },
@@ -224,6 +227,7 @@ const SOUNDS = [
     platform: "TikTok → Instagram",
     meme_id: "brat-summer",
     year: "2024",
+    image: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Charli_XCX_-_Brat.png/320px-Charli_XCX_-_Brat.png",
     audio_url: "https://open.spotify.com/track/2plbrEY59IikOBgBGLjaoe",
     audio_type: "spotify"
   },
@@ -235,6 +239,7 @@ const SOUNDS = [
     platform: "TikTok",
     meme_id: "npc-streaming",
     year: "2023",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=320&q=80",
     audio_url: "https://www.tiktok.com/@pinkydollreal",
     audio_type: "link"
   },
@@ -246,6 +251,7 @@ const SOUNDS = [
     platform: "TikTok → Instagram Reels",
     meme_id: null,
     year: "2007 → viral 2020",
+    image: "https://upload.wikimedia.org/wikipedia/en/thumb/1/1a/Low_%28Flo_Rida_song%29.jpg/320px-Low_%28Flo_Rida_song%29.jpg",
     audio_url: "https://open.spotify.com/track/0nJW01T7XtvILxQgC5J7Wh",
     audio_type: "spotify"
   }

@@ -26,6 +26,11 @@ body {
   color: var(--white);
   font-family: var(--font-body);
   overflow-x: hidden;
+  cursor: none; /* For custom cursor */
+}
+/* Ensure standard interactive elements show our custom cursor behavior, not system pointer */
+a, button, input, select, textarea, .meme-card, .sound-card, .platform-card, .featured-card {
+  cursor: none !important;
 }
 
 /* ===== NAVBAR ===== */
@@ -233,27 +238,83 @@ body {
   justify-content: center;
 }
 
-.big-emoji {
-  font-size: 10rem;
-  animation: float 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 60px rgba(255,60,60,0.3));
+.center-orb {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  filter: blur(20px);
+  animation: floatOrb 5s ease-in-out infinite;
+  opacity: 0.5;
+}
+@keyframes floatOrb {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.5; }
+  50% { transform: scale(1.1) translateY(-20px); opacity: 0.8; }
 }
 
-.floating-card {
+.floating-component {
   position: absolute;
   background: var(--card);
   border: 1px solid var(--border);
-  padding: 0.75rem 1.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  white-space: nowrap;
+  padding: 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 240px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
 }
-.c1 { top: 15%; left: 5%; color: var(--accent); border-color: var(--accent); animation: float 3s ease-in-out infinite; }
-.c2 { top: 40%; right: 5%; color: var(--green); border-color: var(--green); animation: float 3.5s 0.5s ease-in-out infinite; }
-.c3 { bottom: 20%; left: 10%; color: var(--yellow); border-color: var(--yellow); animation: float 4s 1s ease-in-out infinite; }
+.fc-img, .fc-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--dark2);
+  flex-shrink: 0;
+}
+.fc-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+.fc-info span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text);
+}
 
+.c1 { top: 15%; left: 0%; border-color: rgba(255,255,255,0.1); animation: float 4s ease-in-out infinite; z-index: 2; transform: rotate(-5deg); }
+.c2 { top: 40%; right: -5%; border-color: rgba(0,255,135,0.3); animation: float 3.5s 0.5s ease-in-out infinite; z-index: 3; transform: rotate(5deg); }
+.c3 { bottom: 20%; left: 10%; border-color: rgba(255,60,60,0.3); animation: float 5s 1s ease-in-out infinite; z-index: 4; transform: rotate(-2deg); }
+
+/* CUSTOM CURSOR & CANVAS */
+.custom-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 20px; height: 20px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
+  background: rgba(255,60,60,0.1);
+}
+.custom-cursor.hover {
+  width: 40px; height: 40px;
+  background: rgba(255,60,60,0.3);
+  border-color: transparent;
+}
+.dust-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 500; /* Overlays sections but below navbar (1000) */
+}
 /* ===== TICKER ===== */
 .ticker {
   background: var(--accent);

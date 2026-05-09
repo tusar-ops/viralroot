@@ -96,8 +96,8 @@ function renderSoundsGrid() {
   if (!container) return;
   container.innerHTML = SOUNDS.slice(0,6).map(s => `
     <a href="${s.meme_id ? 'meme.html?id='+s.meme_id : 'sounds.html'}" class="sound-card">
-      <div class="sound-icon">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+      <div class="sound-icon" style="${s.image ? `background-image:url('${s.image}');background-size:cover;background-position:center;border:none;border-radius:4px;` : ''}">
+        ${s.image ? '' : `<svg width="28" height="28" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`}
       </div>
       <div class="sound-info">
         <h4>${s.name}</h4>
@@ -281,8 +281,8 @@ function renderSoundsPage() {
   container.innerHTML = SOUNDS.map(s=>`
     <a href="${s.meme_id?'meme.html?id='+s.meme_id:'#'}" class="sound-detail-card">
       <div class="sound-header">
-        <div style="width:48px;height:48px;background:rgba(0,255,135,0.1);border:1px solid var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <div style="width:48px;height:48px;border-radius:4px;background:rgba(0,255,135,0.1);border:1px solid var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0${s.image?`;background-image:url('${s.image}');background-size:cover;background-position:center;border:none`:''}">
+          ${s.image ? '' : `<svg width="28" height="28" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`}
         </div>
         <div style="flex:1">
           <div style="font-family:var(--font-display);font-size:1.2rem;letter-spacing:1px">${s.name}</div>
@@ -378,6 +378,107 @@ function copyLink() {
   });
 }
 
+// ---- Custom Cursor ----
+function initCustomCursor() {
+  const cursor = document.getElementById('customCursor');
+  if (!cursor) return;
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+  
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  const interactiveElements = document.querySelectorAll('a, button, input, select, textarea, .meme-card, .sound-card, .platform-card, .featured-card');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+}
+
+// ---- Dust Particles Effect ----
+function initDustParticles() {
+  const canvas = document.getElementById('dustCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  let width, height;
+  let particles = [];
+  
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+  
+  window.addEventListener('resize', resize);
+  resize();
+  
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = Math.random() * 0.5 - 0.25;
+      this.speedY = Math.random() * 0.5 - 0.25;
+      this.life = Math.random() * 100 + 50;
+      this.maxLife = this.life;
+      this.color = Math.random() > 0.8 ? 'rgba(255, 60, 60, ' : 'rgba(255, 255, 255, ';
+    }
+    
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.life--;
+      
+      if (this.x < 0 || this.x > width) this.speedX *= -1;
+      if (this.y < 0 || this.y > height) this.speedY *= -1;
+      
+      if (this.life <= 0) {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.life = this.maxLife;
+      }
+    }
+    
+    draw() {
+      const opacity = (this.life / this.maxLife) * 0.5;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + opacity + ')';
+      ctx.fill();
+    }
+  }
+  
+  for (let i = 0; i < 50; i++) {
+    particles.push(new Particle());
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+  
+  animate();
+}
+
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', () => {
   applyTheme();
@@ -390,4 +491,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSearchResults();
   renderTrendingPage();
   renderSoundsPage();
+  initCustomCursor();
+  initDustParticles();
 });

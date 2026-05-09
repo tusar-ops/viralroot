@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="dark-mode">
+  <div class="custom-cursor" id="customCursor"></div>
+  <canvas id="dustCanvas" class="dust-canvas"></canvas>
   <nav class="navbar">
     <a href="index.html" class="logo">VIRAL<span>ROOT</span></a>
     <div class="nav-links">
@@ -102,16 +104,24 @@
   <script src="data.js"></script>
   <script src="app.js"></script>
   <script>
-    const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSeLXDzYVVLjJ6gAl_BmZWLPmSFgdUPwcd96VowXarDKlaP9CQ/formResponse";
+    // ---------------------------------------------------------
+    // ⚠️ IMPORTANT: UPDATE THESE VALUES FOR YOUR GOOGLE FORM ⚠️
+    // ---------------------------------------------------------
+    // 1. Get the "pre-filled link" for your form.
+    // 2. The FORM_ACTION should be your form's URL ending in /formResponse
+    const FORM_ACTION = "https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/formResponse";
+    
+    // 3. Inspect the pre-filled link URL to find the entry.XXXXXXX numbers for each field
     const FIELDS = {
-      name:     "entry.1770728950",
-      platform: "entry.1775468505",
-      origin:   "entry.736341428",
-      why:      "entry.701429915",
-      audio:    "entry.638599532",
-      link:     "entry.668602423",
-      handle:   "entry.684665271"
+      name:     "entry.123456789", // Replace with your entry ID for Meme Name
+      platform: "entry.123456789", // Replace with your entry ID for Platform
+      origin:   "entry.123456789", // Replace with your entry ID for Origin
+      why:      "entry.123456789", // Replace with your entry ID for Why
+      audio:    "entry.123456789", // Replace with your entry ID for Audio
+      link:     "entry.123456789", // Replace with your entry ID for Link
+      handle:   "entry.123456789"  // Replace with your entry ID for Handle
     };
+    // ---------------------------------------------------------
 
     async function submitToGoogle() {
       const name     = document.getElementById('memeName').value.trim();
