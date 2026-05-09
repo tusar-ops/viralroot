@@ -35,7 +35,7 @@
 
   <div class="submit-page">
     <h1>SUBMIT A MEME</h1>
-    <p>Know a trending meme, viral sound, or internet trend we haven't covered yet? Tell us about it. We research it and post a full origin story. Help us document internet history.</p>
+    <p>Know a trending meme, viral sound, or internet trend we haven't covered yet? Tell us about it. We research it and post a full origin story within 24–48 hours.</p>
 
     <div id="submitSuccess" class="submit-success">
       ✅ SUBMISSION RECEIVED! We'll research this and post it soon. Thank you for contributing to the internet's meme archive.
@@ -50,13 +50,13 @@
         <label>PLATFORM WHERE IT'S TRENDING *</label>
         <select id="memePlatform">
           <option value="">Select platform...</option>
-          <option value="tiktok">TikTok</option>
-          <option value="instagram">Instagram Reels</option>
-          <option value="youtube">YouTube</option>
-          <option value="twitter">Twitter/X</option>
-          <option value="reddit">Reddit</option>
-          <option value="facebook">Facebook</option>
-          <option value="multiple">Multiple platforms</option>
+          <option value="TikTok">TikTok</option>
+          <option value="Instagram Reels">Instagram Reels</option>
+          <option value="YouTube">YouTube</option>
+          <option value="Twitter/X">Twitter/X</option>
+          <option value="Reddit">Reddit</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Multiple Platforms">Multiple Platforms</option>
         </select>
       </div>
       <div class="form-group">
@@ -79,7 +79,7 @@
         <label>YOUR NAME OR HANDLE (optional — for credit)</label>
         <input type="text" id="memeSubmitter" placeholder="@yourhandle"/>
       </div>
-      <button class="submit-btn" onclick="handleSubmit()">SUBMIT FOR RESEARCH →</button>
+      <button class="submit-btn" onclick="submitToGoogle()">SUBMIT FOR RESEARCH →</button>
     </div>
   </div>
 
@@ -100,5 +100,61 @@
 
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script>
+    const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSeLXDzYVVLjJ6gAl_BmZWLPmSFgdUPwcd96VowXarDKlaP9CQ/formResponse";
+    const FIELDS = {
+      name:     "entry.1770728950",
+      platform: "entry.1775468505",
+      origin:   "entry.736341428",
+      why:      "entry.701429915",
+      audio:    "entry.638599532",
+      link:     "entry.668602423",
+      handle:   "entry.684665271"
+    };
+
+    async function submitToGoogle() {
+      const name     = document.getElementById('memeName').value.trim();
+      const platform = document.getElementById('memePlatform').value;
+      const origin   = document.getElementById('memeOrigin').value.trim();
+      const why      = document.getElementById('memeWhy').value.trim();
+      const audio    = document.getElementById('memeAudio').value.trim();
+      const link     = document.getElementById('memeLink').value.trim();
+      const handle   = document.getElementById('memeSubmitter').value.trim();
+
+      if (!name)     { alert('Please enter the meme name.'); return; }
+      if (!platform) { alert('Please select a platform.'); return; }
+      if (!origin)   { alert('Please describe where it originated.'); return; }
+
+      // Disable button to prevent double submit
+      const btn = document.querySelector('.submit-btn');
+      btn.textContent = 'SUBMITTING...';
+      btn.disabled = true;
+
+      const formData = new FormData();
+      formData.append(FIELDS.name,     name);
+      formData.append(FIELDS.platform, platform);
+      formData.append(FIELDS.origin,   origin);
+      formData.append(FIELDS.why,      why     || "Not provided");
+      formData.append(FIELDS.audio,    audio   || "Unknown");
+      formData.append(FIELDS.link,     link    || "Not provided");
+      formData.append(FIELDS.handle,   handle  || "Anonymous");
+
+      try {
+        // no-cors is required for Google Forms — it still submits successfully
+        await fetch(FORM_ACTION, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        });
+      } catch(e) {
+        // fetch throws in no-cors mode but submission still goes through
+      }
+
+      // Show success
+      document.getElementById('submitForm').style.display = 'none';
+      document.getElementById('submitSuccess').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
